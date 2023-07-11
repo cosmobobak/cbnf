@@ -1,5 +1,5 @@
 # cbnf
-The CBNF (cat-boy network format) neural network header format.
+The CBNF (catboy network format) neural network header format.
 
 ## What is CBNF?
 
