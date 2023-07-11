@@ -47,4 +47,4 @@ The magic bytes must equal `CBNF`, or the header is considered ill-formed, no di
 ## Existing Implementations
 
 ### cbnf-rs
-This repository contains a Rust implementation of CBNF, as a crate that provides rudimentary convenience methods, such as header parsing and utf-8 name validation.
+This repository contains a Rust implementation of CBNF as a crate that provides rudimentary convenience methods, such as header parsing and utf-8 name validation.
