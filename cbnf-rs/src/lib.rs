@@ -43,12 +43,21 @@ impl CBNFHeader {
     /// Get the name of the network as a UTF-8 string.
     /// Truncates the name if the length field indicates a name longer than the
     /// 48 bytes available in the header.
-    /// 
+    ///
     /// # Errors
-    /// 
+    ///
     /// Returns an error if the name is not valid UTF-8.
     pub fn name(&self) -> Result<&str, core::str::Utf8Error> {
         let rhs = core::cmp::min(self.name_len as usize, self.name.len());
         core::str::from_utf8(&self.name[0..rhs])
+    }
+
+    /// Get the header as a byte slice.
+    #[must_use]
+    pub const fn as_bytes(&self) -> &[u8] {
+        const LEN: usize = core::mem::size_of::<CBNFHeader>();
+        let data = (self as *const Self).cast::<u8>();
+        // SAFETY: The header is packed, so there are no padding or alignment issues.
+        unsafe { core::slice::from_raw_parts(data, LEN) }
     }
 }
