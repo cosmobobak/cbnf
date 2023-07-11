@@ -3,7 +3,7 @@ The CBNF (cat-boy network format) neural network header format.
 
 ## What is CBNF?
 
-CBNF is a neural network header format for use with [efficiently updateable neural networks]() for chess. It is in a very early stage of development, and is currently subject to change.
+CBNF is a neural network header format for use with [efficiently updatable neural networks](https://en.wikipedia.org/wiki/Efficiently_updatable_neural_network) for chess. It is in a very early stage of development, and is currently subject to change.
 
 ## Data Format
 
