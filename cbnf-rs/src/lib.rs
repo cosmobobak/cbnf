@@ -2,6 +2,7 @@
 #![deny(clippy::unwrap_used, clippy::expect_used)]
 #![no_std]
 
+/// The header of a CBNF file.
 #[repr(C, packed)]
 pub struct CBNFHeader {
     pub magic: [u8; 4],
