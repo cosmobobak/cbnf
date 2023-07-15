@@ -12,3 +12,4 @@ categories = ["games", "no-std", "parser-implementations"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+bitflags = "2.3.3"
