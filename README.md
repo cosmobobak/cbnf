@@ -7,7 +7,7 @@ CBNF is a neural network header format for use with [efficiently updatable neura
 
 ## Data Format
 
-CBNF is a fixed-size 128-byte header format, shown here with C++ and Rust structs:
+CBNF is a fixed-size 256-byte header format, shown here with C++ and Rust structs:
 
 ```cpp
 struct __attribute__((packed)) CBNFHeader {

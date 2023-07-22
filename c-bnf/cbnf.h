@@ -45,7 +45,7 @@ _Static_assert(sizeof(CbnfHeader) == 256, "sizeof(CbnfHeader) != 256");
 // Returns `NULL` if: 
 //   - the data is too short
 //   - the magic bytes are incorrect
-//   - the header version is not supported by this version of cbnf++
+//   - the header version is not supported by this version of c-bnf
 //   - if `validate` is true:
 //     - any undefined flags are set
 //     - the number of output buckets is 0
