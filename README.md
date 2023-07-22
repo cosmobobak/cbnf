@@ -11,18 +11,18 @@ CBNF is a fixed-size 256-byte header format, shown here with C++ and Rust struct
 
 ```cpp
 struct __attribute__((packed)) CBNFHeader {
-	std::array<char, 4> magic;
-	std::uint8_t version;
-	std::uint16_t flags;
-	std::uint8_t layerCount;
-	std::array<std::uint16_t, 32> layerSize;
-	std::array<std::uint8_t, 32> layerQuantization;
-	std::array<std::uint8_t, 32> activations;
-	std::array<std::uint8_t, 64> inputKingBucketing;
-	std::uint8_t outputBuckets;
-	std::array<std::uint8_t, 6> reserved;
-	std::uint8_t nameLen;
-	std::array<char, 48> name;
+    std::array<char, 4> magic;
+    std::uint8_t version;
+    std::uint16_t flags;
+    std::uint8_t layerCount;
+    std::array<std::uint16_t, 32> layerSize;
+    std::array<std::uint8_t, 32> layerQuantization;
+    std::array<std::uint8_t, 32> activations;
+    std::array<std::uint8_t, 64> inputKingBucketing;
+    std::uint8_t outputBuckets;
+    std::array<std::uint8_t, 6> reserved;
+    std::uint8_t nameLen;
+    std::array<char, 48> name;
 };
 ```
 
@@ -33,12 +33,12 @@ pub struct CBNFHeader {
     pub version: u16,
     pub flags: u16,
     pub layer_count: u8,
-	pub layer_size: [u16, 32],
-	pub layer_quantization: [u8, 32],
-	pub activations: [u8, 32],
-	pub input_king_bucketing: [u8, 64],
+    pub layer_size: [u16, 32],
+    pub layer_quantization: [u8, 32],
+    pub activations: [u8, 32],
+    pub input_king_bucketing: [u8, 64],
     pub output_buckets: u8,
-	pub reserved: [u8; 6],
+    pub reserved: [u8; 6],
     pub name_len: u8,
     pub name: [u8; 48],
 }
