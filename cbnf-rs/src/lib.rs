@@ -54,7 +54,16 @@ pub const SUPPORTED_HEADER_VERSION: u8 = 2;
 
 impl CBNFHeader {
     /// Parse a CBNF header from a byte slice.
-    /// Returns `None` if the data is too short or the magic number is incorrect.
+    /// Returns `None` if:
+    ///   - the data is too short
+    ///   - the magic bytes are incorrect
+    ///   - the header version is not supported by this version of cbnf-rs
+    ///   - if `validate` is true:
+    ///     - any undefined flags are set
+    ///     - the number of output buckets is 0
+    ///     - the number of hidden layers is 0 or greater than 32
+    ///     - any of the hidden layer sizes within the number of hidden layers are 0
+    ///     - the network name is not null-terminated
     #[must_use]
     pub fn parse(data: &[u8], validate: bool) -> Option<&Self> {
         if data.len() < core::mem::size_of::<Self>() {
