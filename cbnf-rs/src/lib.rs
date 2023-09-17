@@ -8,6 +8,7 @@ pub enum Activation {
     RELU = 0,
     CRELU,
     SCRELU,
+    FAST_SCRELU,
     SIGMOID,
     TANH
 }

@@ -11,6 +11,7 @@ namespace cbnfpp {
         Relu = 0,
         Crelu,
         Screlu,
+        FastScrelu,
         Sigmoid,
         Tanh
     };
