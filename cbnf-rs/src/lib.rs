@@ -1,6 +1,9 @@
 #![warn(clippy::all, clippy::pedantic, clippy::nursery, clippy::cargo)]
 #![deny(clippy::unwrap_used, clippy::expect_used)]
 
+//! A library for parsing CBNF NNUE headers.
+//! CBNF is a format for encoding information about a neural network in the header of a file.
+
 pub const MAX_LAYER_COUNT: u8 = 32;
 
 /// The activation function of a layer.
