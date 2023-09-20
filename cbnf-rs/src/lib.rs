@@ -27,11 +27,16 @@ pub enum Activation {
 }
 
 bitflags::bitflags! {
+    /// The flags of a CBNF network.
     #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub struct Flags: u16 {
+        /// The network is compressed with Zstandard.
         const ZSTD_COMPRESSED = 0x0001;
+        /// The network uses a stm-relative feature vector.
         const RELATIVE = 0x0002;
+        /// ???
         const HALF = 0x0004;
+        /// The network's input bucketing scheme is horizontally mirrored.
         const HORIZONTALLY_MIRRORED = 0x0008;
 
         const ARCH_MASK = Self::RELATIVE.bits()
