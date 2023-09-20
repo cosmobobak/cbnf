@@ -3,17 +3,31 @@
 
 pub const MAX_LAYER_COUNT: u8 = 32;
 
+/// The activation function of a layer.
 #[repr(u8)]
 pub enum Activation {
-    RELU = 0,
-    CRELU,
-    SCRELU,
-    FAST_SCRELU,
-    SIGMOID,
-    TANH
+    /// The Rectified Linear Unit activation function.
+    /// `f(x) = max(0, x)`
+    ReLU = 0,
+    /// The Clipped Rectified Linear Unit activation function.
+    /// `f(x) = clamp(x, 0, 1)`
+    CReLU,
+    /// The Squared Clipped Rectified Linear Unit activation function.
+    /// `f(x) = clamp(x, 0, 1)^2`
+    SCReLU,
+    /// The Fast Squared Clipped Rectified Linear Unit activation function.
+    /// `f(x) ~= clamp(x, 0, 1)^2`
+    FastSCReLU,
+    /// The Sigmoid activation function.
+    /// `f(x) = 1 / (1 + e^-x)`
+    Sigmoid,
+    /// The Hyperbolic Tangent activation function.
+    /// `f(x) = tanh(x)`
+    Tanh,
 }
 
 bitflags::bitflags! {
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub struct Flags: u16 {
         const ZSTD_COMPRESSED = 0x0001;
         const RELATIVE = 0x0002;
@@ -83,7 +97,10 @@ impl CBNFHeader {
         }
 
         if validate {
-            if (header.flags & Flags::ALL) != header.flags {
+            // copy flags to deal with unaligned access
+            let flags = header.flags;
+
+            if (flags & Flags::ALL) != flags {
                 return None;
             }
 
@@ -122,7 +139,8 @@ impl CBNFHeader {
     }
 
     /// Get the flags of this network that are relevant to the architecture.
-    pub fn arch_flags(&self) -> u16 {
+    #[must_use]
+    pub fn arch_flags(&self) -> Flags {
         self.flags & Flags::ARCH_MASK
     }
 
